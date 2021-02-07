@@ -10,7 +10,7 @@
 // scrolling
 // doc.qse(container).scrollTo(0,1000000)
 
-// "use strict";
+"use strict";
 
 
 // let firstNumber = document.querySelector("#firstNumber").value;
@@ -20,6 +20,7 @@ let results = document.querySelector("#results");
 let clear = document.querySelector("#clear");
 let calculateButton = document.querySelector("button#calculate");
 let calculate = document.querySelector("#calculate");
+
 document.querySelector("#calculate").addEventListener("click", calculating);
 
 function calculating() {
@@ -29,34 +30,57 @@ function calculating() {
     console.log(firstNumber);
     console.log(secondNumber);
     console.log(operator);
-
+    let result;
+    // calculate first + second 
+    if (operator === "add") {
+    result = firstNumber + secondNumber;
+    // calculate first - second
+    } else if (operator === "sub") {
+    result = firstNumber - secondNumber;
+    // calculate first / second    
+    } else if (operator === "div") {
+    result = firstNumber / secondNumber;
+    // calculate first * second
+    } else if (operator === "mul") {
+    result = firstNumber * secondNumber;
+    }  
+    console.log(result);
+    showResult(result); 
+    return result;
 }
 
-// read first number 
-// function readFirstNumber() {
-//     console.log("readFirstNumber");
-//     // readfrom field --->
-//     // const firstNumber = doc.qse("#firstNumber").value;
-//     let firstNumber = document.querySelector("#firstNumber").value;
-//     return firstNumber;
-//     console.log(firstNumber);
-// }
+function showResult(result) {
+    let decimals = document.querySelector("#decimals").value;
+    let doRound = document.querySelector("#doRound").value;
+    let finalResult = document.createElement("li");
+    console.log("decimals");
+    console.log("doRound");
+    
+    if (doRound === "on") {
+        // calculate first + second 
+        if (operator === "add") {
+            console.log(answer);
+            result = Number(firstNumber) + Number(secondNumber);
+        // calculate first - second
+        } else if (operator === "sub") {
+            console.log(answer);
+            result = Number(firstNumber) - Number(secondNumber);
+        // calculate first / second    
+        } else if (operator === "div") {
+            console.log(answer);
+            result = Number(firstNumber) / Number(secondNumber);
+        // calculate first * second
+        } else if (operator === "mul") {
+            console.log(answer);
+            result = Number(firstNumber) * Number(secondNumber);
+        }
 
-// read second number
-// function readSecondNumber() {
-//     console.log("readSecondNumber");
-//     const secondNumber = document.querySelector("#secondNumber").value;
-//     return secondNumber;
-//     console.log(secondNumber);
-// }
-
-// read operator
-// function readOperator() {
-//     console.log("readOperator");
-//     selectValue = document.getElementById("operator").value;
-//     calculation();
-// }
-
+        finalResult.textContent = result;
+    } else {
+        finalResult.textContent = result;
+    }
+    results.appendChild(finalResult);
+}
 
 // if else --->
 // function calculation() {
@@ -79,7 +103,7 @@ function calculating() {
 //         console.log(answer);
 //         result = firstNumber * secondNumber;
 //     }
-//     // checkRounded();
+    // checkRounded();
 //     WriteFirstNumberField();
 // }
 
