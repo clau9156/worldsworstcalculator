@@ -20,8 +20,17 @@ let results = document.querySelector("#results");
 let clear = document.querySelector("#clear");
 let calculateButton = document.querySelector("button#calculate");
 let calculate = document.querySelector("#calculate");
+// let decimals = document.querySelector("#decimals");
 
 document.querySelector("#calculate").addEventListener("click", calculating);
+document.querySelector("#clear").addEventListener("click", e=>{
+    window.location.reload();
+});
+document.querySelector("#results").scrollTo(0,1000000);
+// scroll list to the bottom 
+    // scrolling
+    // doc.qse(container).scrollTo(0,1000000)
+    // document.querySelector().scrollTo(0,1000000);
 
 function calculating() {
     let firstNumber = document.querySelector("#firstNumber").value;
@@ -33,16 +42,16 @@ function calculating() {
     let result;
     // calculate first + second 
     if (operator === "add") {
-    result = firstNumber + secondNumber;
+    result = Number(firstNumber) + Number(secondNumber);
     // calculate first - second
     } else if (operator === "sub") {
-    result = firstNumber - secondNumber;
+    result = Number(firstNumber) - Number(secondNumber);
     // calculate first / second    
     } else if (operator === "div") {
-    result = firstNumber / secondNumber;
+    result = Number(firstNumber) / Number(secondNumber);
     // calculate first * second
     } else if (operator === "mul") {
-    result = firstNumber * secondNumber;
+    result = Number(firstNumber) * Number(secondNumber);
     }  
     console.log(result);
     showResult(result); 
@@ -57,23 +66,51 @@ function showResult(result) {
     console.log("doRound");
     
     if (doRound === "on") {
-        // calculate first + second 
-        if (operator === "add") {
-            console.log(answer);
-            result = Number(firstNumber) + Number(secondNumber);
-        // calculate first - second
-        } else if (operator === "sub") {
-            console.log(answer);
-            result = Number(firstNumber) - Number(secondNumber);
-        // calculate first / second    
-        } else if (operator === "div") {
-            console.log(answer);
-            result = Number(firstNumber) / Number(secondNumber);
-        // calculate first * second
-        } else if (operator === "mul") {
-            console.log(answer);
-            result = Number(firstNumber) * Number(secondNumber);
+        let num = result;
+        let n;
+        let option = document.querySelector("#decimals").value;
+    
+
+
+        if (decimals.value === "0") {
+            n = num.toFixed();
+        } else if (decimals.value === "1") {
+            n = num.toFixed(1);
+        } else if (decimals.value === "2") {
+            n = num.toFixed(2);
+        } else if (decimals.value === "3") {
+            n = num.toFixed(3);
+        } else if (decimals.value === "4") {
+            n = num.toFixed(4);
+        } else if (decimals.value === "5") {
+            n = num.toFixed(5);
+        } else if (decimals.value === "6") {
+            n = num.toFixed(6);
+        } else if (decimals.value === "7") {
+            n = num.toFixed(7);
+        } else if (decimals.value === "8") {
+            n = num.toFixed(8);
         }
+
+        // if (option === "0") {
+        //     let n = num.toFixed();
+        // } else if (option === "1") {
+        //     n = num.toFixed(1);
+        // } else if (option === "2") {
+        //     n = num.toFixed(2);
+        // } else if (option === "3") {
+        //     n = num.toFixed(3);
+        // } else if (option === "4") {
+        //     n = num.toFixed(4);
+        // } else if (option === "5") {
+        //     n = num.toFixed(5);
+        // } else if (option === "6") {
+        //     n = num.toFixed(6);
+        // } else if (option === "7") {
+        //     n = num.toFixed(7);
+        // } else if (option === "8") {
+        //     n = num.toFixed(8);
+        // }
 
         finalResult.textContent = result;
     } else {
@@ -82,30 +119,7 @@ function showResult(result) {
     results.appendChild(finalResult);
 }
 
-// if else --->
-// function calculation() {
-//     console.log("calculation");
-//     const operatorInput = document.querySelector("#operator");
-//     // calculate first + second 
-//     if (operatorInput === "add") {
-//         console.log(answer);
-//         result = firstNumber + secondNumber;
-//     // calculate first - second
-//     } else if (operatorInput === "sub") {
-//         console.log(answer);
-//         result = firstNumber - secondNumber;
-//     // calculate first / second    
-//     } else if (operatorInput === "div") {
-//         console.log(answer);
-//         result = firstNumber / secondNumber;
-//     // calculate first * second
-//     } else if (operatorInput === "mul") {
-//         console.log(answer);
-//         result = firstNumber * secondNumber;
-//     }
-    // checkRounded();
-//     WriteFirstNumberField();
-// }
+
 
 // check if result should be rounded
 // function checkRounded() {
@@ -161,14 +175,5 @@ function showResult(result) {
 
 
 
-// click "clear results"
-// function clickClear() {
-//     console.log("clickClear");
-//     document.querySelector("#clear").addEventListener("click", clearResults);
-//     clearResults();
-// }
 
-// clear list of results
-// function clearResults() {
-//     console.log("clearResults");
-// }
+
